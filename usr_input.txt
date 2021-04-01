@@ -1,0 +1,8 @@
+batch_size=2
+width=512
+height=512
+stream0=/home/jiande/helm_chart/images0
+stream1=/home/jiande/helm_chart/images1
+stream2=/home/jiande/helm_chart/images2
+pro_per_sec=40
+no_streams=3
