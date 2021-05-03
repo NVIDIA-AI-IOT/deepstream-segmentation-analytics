@@ -33,14 +33,14 @@ One must have the following development packages installed
   *  DeepStream-5.1 SDK : https://docs.nvidia.com/metropolis/deepstream/dev-guide/index.html
 
 # DeepStream Pipeline 
-  * DeepStream SDK is based on the GStreamer framework. GStreamer is a pipeline based multimedia framework that links together a wide variety of media processing systems to complete workflows. Following is the piple for this segmentation application.
+  * DeepStream SDK is based on the GStreamer framework. GStreamer is a pipeline based multimedia framework that links together a wide variety of media processing systems to complete workflows. Following is the pipleline for this segmentation application. It supports for both binary and multi class model for the segmentation.
 ![gst-pipleline-png](gst-pipeline.png)
 
 
 # This DeepStream Segmentation Apps Overview
   * The usr_input.txt gethers the user input information as example as following:
 
-    * batch_size - how many images will need going through the segementation process for a stream directory
+    * batch_size - how many images will need going through the segmentation process for a stream directory
 
     * width - the output jpg file width (usually same as the input image width)
 
@@ -50,7 +50,7 @@ One must have the following development packages installed
 
     * pro_per_sec - repeat the segmentation run after how many seconds 
 
-    * no_streams - how many streams the env. will have
+    * no_streams - how many stream dirs are in the env.
 
   * each time of apps run, it will go through all the stream directory, i.e, stream0, stream1, streamN to perform a batch size image segmentation <br> 
 
@@ -67,13 +67,13 @@ One must have the following development packages installed
 
   * $ make
 
-# How to Run the Application Package
+# How to Run the Application Using the Released Segmentation Models in DeepStream SDK
 
-  * $ ./deepstream-segmentation-analytics -c pgie_config_file -i usr_input.txt
+  * $ ./deepstream-segmentation-analytics -c dstest_segmentation_config_industrial.txt -i usr_input.txt  -for binary segmentation
 
-  * For binary segmentaion example: ./deepstream-segmentation-analytics -c dstest_segmentation_config_industrial.txt -i usr_input.txt
+  * $ ./deepstream-segmentation-analytics -c dstest_segmentation_config_semantic.txt -i usr_input.txt  -for multi class 
 
-  * The program run will generate the out.jpg as the masked ground truth after the segmentation which is saved in the masks directory.
+  * The program run will generate the output jpg as the masked ground truth after the segmentation which is saved in the masks directory.
 
       ![segmentation-result](segmentation-result.png)
 
@@ -88,13 +88,26 @@ One must have the following development packages installed
  
  
  
+
  
-  ## Nvidia Transfer Learning Toolking 3.0 for Unet Training, Export, Evaluation, and Inference 
+ # Nvidia Transfer Learning Toolking 3.0 for Re-Training, Evaluation, Export, and Quick Deployment
+
+
+
+
+  *  TLT Converter Information (how to download) : https://developer.nvidia.com/tlt-get-started
+
+![tlt-coverter](tlt-converter.png)
+
+
+
+
+
+  * Use Nvidia TLT 3.0 for Re-Training, Evaluation, Export, and Quick Deployment 
 
 ![unet-retrain](unet-retrain.png) 
 
  
-
 
 
 
@@ -105,7 +118,7 @@ One must have the following development packages installed
 
 
 
-# Quickly Deploying the Apps to DeepStream-5.1 Using Transfer Learning Toolkit-3.0
+# Quickly Deploying the Apps to DeepStream-5.1 Using Transfer Learning Toolkit-3.0 <br>
 
   * Use the .etlt or .engine file after TLT train, export, and coverter
 
