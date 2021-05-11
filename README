@@ -1,0 +1,77 @@
+*****************************************************************************
+* Copyright (c) 2019-2020 NVIDIA Corporation.  All rights reserved.
+*
+* NVIDIA Corporation and its licensors retain all intellectual property
+* and proprietary rights in and to this software, related documentation
+* and any modifications thereto.  Any use, reproduction, disclosure or
+* distribution of this software and related documentation without an express
+* license agreement from NVIDIA Corporation is strictly prohibited.
+*****************************************************************************
+
+Prequisites:
+
+Please follow instructions in the apps/sample_apps/deepstream-app/README on how
+to install the prequisites for Deepstream SDK, the DeepStream SDK itself and the
+apps.
+
+You must have the following development packages installed
+   GStreamer-1.0
+   GStreamer-1.0 Base Plugins
+   GStreamer-1.0 gstrtspserver
+   X11 client-side library
+
+To install these packages, execute the following command:
+   sudo apt-get install libgstreamer-plugins-base1.0-dev libgstreamer1.0-dev \
+   libgstrtspserver-1.0-dev libx11-dev
+
+Pipeline:
+H264/JPEG-->decoder-->tee -->| -- (batch size) ------>|-->streammux--> nvinfer--> nvsegvisual ----> nvosd --> |---> encode --->filesink
+
+Compilation Steps:
+  $ cd apps/deepstream-segmentation-test/
+  $ make
+
+the usr_input.txt
+=================
+this is the user input file to define the input image batch size, output display height and width, stream directories. Please follow exact format as below example: i.e. no less or space, no variable name change. for example, stream1 can not be images1, etc. If user does not want change the value, then following setting will be the default. the program will be run forever unless user will shut if off.  
+
+example 
+===========
+batch_size=8
+width=1280
+height=720
+stream1=/opt/nvidia/deepstream/deepstream-5.0/sources/apps/sample_apps/deepstream-segmentation-analytics/images1
+stream2=/opt/nvidia/deepstream/deepstream-5.0/sources/apps/sample_apps/deepstream-segmentation-analytics/images2
+pro_per_sec=40
+no_streams=3
+production=1
+
+user defined parameters
+=======================
+
+batch_size  : how many total images each time to load for a stram directory
+width       : output image width
+height      : output image height
+stream1     : path to image1 directory
+stream2     : path to image2 directory
+pro_per_sec : how many seconds to wait before a new segmentation run
+no_streams  : number of stream directories
+production  : 1 for real production env. 0 for Nvidia helm-chart env.
+ 
+
+Example command to run:
+=======================
+
+For binary segmentation:
+
+ $ ./deepstream-segmentation-analytics -c dstest_segmentation_config_industrial.txt -i usr_input.txt
+
+For multi-class semantic segmentation: 
+
+ $ ./deepstream-segmentation-analytics -c dstest_segmentation_config_semantic.txt -i usr_input.txt
+
+
+Other Note
+==========
+for Helm-Chart env., segmentation run generate out.jpg for the mask ground truth 
+for the producton env., the mask directory will have the all the mask ground truth pictures and input directory will save the input images in case to be used for the retrain purpose
