@@ -145,7 +145,9 @@ One must have the following development packages installed
       ![segmentation-result](segmentation-result.png)
 
  
-  * The performance using different GPU devices
+ 
+ 
+ # The performance using different GPU devices
 
   ![performance-jetson-dgpu](performance-jetson-dgpu.png)
 
