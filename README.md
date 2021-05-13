@@ -134,11 +134,11 @@ One must have the following development packages installed
 
 # How to Run this DeepStream Segmentation Application 
 
+  * make the models dir. in the deepstream-segmentation-analytics and copy the trt.fp16.tlt.unet.engine (as example) into models dir.
+
   * $ ./deepstream-segmentation-analytics -c dstest_segmentation_config_industrial.txt -i usr_input.txt  -for binary segmentation
 
   * $ ./deepstream-segmentation-analytics -c dstest_segmentation_config_semantic.txt -i usr_input.txt  -for multi class 
-
-  * make the models dir. in the deepstream-segmentation-analytics and copy the trt.fp16.tlt.unet.engine (as example) into models dir.
 
   * The program run will generate the output jpg as the masked ground truth after the segmentation which is saved in the masks directory.
 
