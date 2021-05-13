@@ -72,7 +72,7 @@ One must have the following development packages installed
 
  
 
- # Nvidia Transfer Learning Toolkit 3.0 (Training / Evaluation / Export / Coverter)
+ # Nvidia Transfer Learning Toolkit 3.0 (Training / Evaluation / Export / Converter)
 
 
   * Please read the Nvidia TLT-3.0 document : https://developer.nvidia.com/tlt-get-started
