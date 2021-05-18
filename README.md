@@ -55,8 +55,10 @@ One must have the following development packages installed
     * no_streams - how many stream dirs are in the env.
 
     * production - 1 for real production env. case. 0 for the Nvidia internal helm-chart env. 
+  
+  *  User need to download the dataset: Class7 from All the images are from the DAGM 2007 [1] and put the images into the images0, images1...
 
-  * each time of apps run, it will go through all the stream directory, i.e, stream0, stream1, streamN to perform a batch size image segmentation <br> 
+  * Each time of apps run, it will go through all the stream directory, i.e, stream0, stream1, streamN to perform a batch size image segmentation <br> 
 
   * To perform a batch size image access for the stream0, stream1, streamN, if the image dir. is exmpty, it will not do anything
 
